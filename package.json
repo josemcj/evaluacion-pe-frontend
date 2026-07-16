@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "axios": "^1.18.1",
     "bootstrap": "^5.3.8",
     "bootstrap-vue-next": "^0.45.8",
