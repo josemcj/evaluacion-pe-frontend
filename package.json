@@ -9,7 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.39"
+    "axios": "^1.18.1",
+    "bootstrap": "^5.3.8",
+    "bootstrap-vue-next": "^0.45.8",
+    "jwt-decode": "^4.0.0",
+    "vue": "^3.5.39",
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.7",
