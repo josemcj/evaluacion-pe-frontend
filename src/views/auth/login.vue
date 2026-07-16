@@ -21,7 +21,6 @@ const submit = async () => {
 
   try {
     const response = await authStore.login(form);
-    console.log(response);
     await router.replace({ name: 'dashboard' });
   } catch (error) {
     console.error(error);

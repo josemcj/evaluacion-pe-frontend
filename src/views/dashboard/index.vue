@@ -1,5 +1,7 @@
-<script setup></script>
+<script setup>
+import Header from '@/components/header.vue';
+</script>
 
 <template>
-  <h1>Vista general</h1>
+  <Header />
 </template>
