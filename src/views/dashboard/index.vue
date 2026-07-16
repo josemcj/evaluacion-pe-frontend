@@ -1,7 +1,7 @@
 <script setup>
 import { computed, defineAsyncComponent } from 'vue';
-import Layout from '@/components/layout/layout.vue';
 import { useAuthStore } from '@/stores/auth.js';
+import Layout from '@/components/layout/layout.vue';
 
 const authStore = useAuthStore();
 
