@@ -10,8 +10,10 @@ const authStore = useAuthStore();
 const tableFields = [
   { key: 'id', label: 'ID' },
   { key: 'cardholder', label: 'Cliente' },
+  { key: 'approvalNumber', label: 'Número de aprobación' },
+  { key: 'maskedCard', label: 'Tarjeta' },
   { key: 'amount', label: 'Monto' },
-  { key: 'date', label: 'Fecha' },
+  { key: 'createdAt', label: 'Fecha' },
   { key: 'status', label: 'Estado' },
 ];
 const filter = ref('');
@@ -36,7 +38,6 @@ const fecthTransactions = async () => {
     error.value = 'Error al cargar las transacciones';
   } finally {
     loading.value = false;
-    console.log(transactions.value);
   }
 };
 
