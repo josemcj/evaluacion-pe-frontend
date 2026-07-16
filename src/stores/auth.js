@@ -67,12 +67,12 @@ export const useAuthStore = defineStore('auth', () => {
       throw new Error('El servidor devolvió un token inválido.');
     }
 
-    const decodedRole = getRoleFromPayload(payload);
+    // const decodedRole = getRoleFromPayload(payload);
     token.value = accessToken;
     user.value = response.user ?? {};
 
     localStorage.setItem(TOKEN_LS_KEY, token.value);
-    localStorage.setItem(USER_LS_KEY, JSON.stringify(user.value));
+    localStorage.setItem(USER_LS_KEY, JSON.stringify({ name: user.value.name, username: user.value.username }));
   };
 
   const logout = () => {
