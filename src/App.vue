@@ -1,7 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { BApp } from 'bootstrap-vue-next';
 </script>
 
 <template>
-  <HelloWorld />
+  <BApp>
+    <router-view />
+  </BApp>
 </template>
