@@ -48,7 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const tokenPayload = computed(() => decodeToken(token.value));
   const role = computed(() => getRoleFromPayload(tokenPayload.value));
-  const hasRole = (role) => role.value === role;
+  const hasRole = (roleName) => role.value === roleName;
 
   const isOperator = computed(() => role.value === 'Operador');
   const isSupervisor = computed(() => role.value === 'Supervisor');
