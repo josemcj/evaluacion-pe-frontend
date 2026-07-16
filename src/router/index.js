@@ -1,17 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import routes from './routes';
+import { useAuthStore } from '@/stores/auth';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
-    return savedPosition || { top: 0, left: 0 };
-  },
 });
 
-router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | Transacciones` || 'Evaluación PE';
-  next();
+router.beforeEach((to) => {
+  const authStore = useAuthStore();
+
+  document.title = `${to.meta.title} | Transacciones` || 'Transacciones';
+
+  if (to.meta.requiresAuth && !authStore.isLoggedIn) {
+    return { name: 'login' };
+  }
+
+  if (to.name === 'login' && authStore.isLoggedIn) {
+    return { name: 'dashboard' };
+  }
+
+  return true;
 });
 
 export default router;

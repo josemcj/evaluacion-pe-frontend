@@ -13,8 +13,22 @@ export default [
     },
   },
 
-  // Rutas protegidas
+  /**
+   * Rutas protegidas
+   */
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('@/views/dashboard/index.vue'),
+    meta: {
+      title: 'Dashboard',
+      requiresAuth: true,
+    },
+  },
 
+  /**
+   * Rutas no existentes (404)
+   */
   {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
