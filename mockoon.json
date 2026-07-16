@@ -1,0 +1,426 @@
+{
+  "uuid": "4ef1939c-7ecc-4061-b8b5-24e182b92608",
+  "lastMigration": 33,
+  "name": "Transacciones",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "5c39fd04-9536-4b7d-a039-3fa2c109477d",
+      "type": "http",
+      "documentation": "Incio de sesión",
+      "method": "post",
+      "endpoint": "auth/login",
+      "responses": [
+        {
+          "uuid": "467cdbc7-07ba-4383-a57c-3bcd69b66071",
+          "body": "{\n  \"accessToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3ODQxNjE5NzAsImV4cCI6MTgxNTY5Nzk3MCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoib3BlcmFkb3IiLCJnaXZlbk5hbWUiOiJKb3NlIiwic3VybmFtZSI6Ik9wZXJhZG9yIiwiZW1haWwiOiJqb3NlQG1haWwuY29tIiwicm9sZSI6Ik9wZXJhZG9yIn0.MKUofrAa5DlUFtEweg5NLm9-5Ia00f50k_ptE2iPEos\",\n  \"user\": {\n    \"name\": \"Usuario Operador\",\n    \"username\": \"operador\",\n    \"role\": \"Operador\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "operador",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "operador123",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ba2cb364-be8e-4254-a09d-57b1cd49a953",
+          "body": "{\n  \"accessToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3ODQxNjE5NzAsImV4cCI6MTgxNTY5Nzk3MCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoic3VwZXJ2aXNvciIsImdpdmVuTmFtZSI6Ikpvc2UiLCJzdXJuYW1lIjoiU3VwZXJ2aXNvciIsImVtYWlsIjoiam9zZXN1cEBtYWlsLmNvbSIsInJvbGUiOiJTdXBlcnZpc29yIn0.MLRjpqDBldvIBPNqbhCPK--k5TUK6B7jme6bzU25KKo\",\n  \"user\": {\n    \"name\": \"Usuario Supervisor\",\n    \"username\": \"supervisor\",\n    \"role\": \"Supervisor\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "supervisor",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "supervisor123",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "50251e78-71df-470b-abb5-c7a53f57e954",
+          "body": "{\n  \"message\": \"Usuario o contraseña incorrectos.\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "7131e43c-2075-41bc-9eba-e628f81b03da",
+      "type": "http",
+      "documentation": "Listado de transacciones",
+      "method": "get",
+      "endpoint": "transactions",
+      "responses": [
+        {
+          "uuid": "249b2f21-ad15-4ee6-a09c-b4a316f24298",
+          "body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"approvalNumber\": \"481726\",\n      \"financialReference\": \"29481736\",\n      \"maskedCard\": \"**** 3679\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 1250.5,\n      \"cardholder\": \"Juan Pérez\",\n      \"createdAt\": \"2026-07-16T08:15:22\"\n    },\n    {\n      \"id\": 2,\n      \"approvalNumber\": \"153908\",\n      \"financialReference\": \"82649153\",\n      \"maskedCard\": \"**** 8241\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 599.99,\n      \"cardholder\": \"María López\",\n      \"createdAt\": \"2026-07-16T08:48:10\"\n    },\n    {\n      \"id\": 3,\n      \"approvalNumber\": \"902147\",\n      \"financialReference\": \"51048293\",\n      \"maskedCard\": \"**** 1935\",\n      \"status\": \"Cancelado\",\n      \"amount\": 890,\n      \"cardholder\": \"Carlos Ramírez\",\n      \"createdAt\": \"2026-07-16T09:10:43\"\n    },\n    {\n      \"id\": 4,\n      \"approvalNumber\": \"675214\",\n      \"financialReference\": \"70391825\",\n      \"maskedCard\": \"**** 4508\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 3200,\n      \"cardholder\": \"Ana Torres\",\n      \"createdAt\": \"2026-07-16T09:33:15\"\n    },\n    {\n      \"id\": 5,\n      \"approvalNumber\": \"218640\",\n      \"financialReference\": \"18540729\",\n      \"maskedCard\": \"**** 9017\",\n      \"status\": \"Devolución\",\n      \"amount\": 1499.9,\n      \"cardholder\": \"Pedro Hernández\",\n      \"createdAt\": \"2026-07-16T10:05:01\"\n    },\n    {\n      \"id\": 6,\n      \"approvalNumber\": \"834195\",\n      \"financialReference\": \"96258314\",\n      \"maskedCard\": \"**** 1126\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 250.75,\n      \"cardholder\": \"Laura Gómez\",\n      \"createdAt\": \"2026-07-16T10:26:37\"\n    },\n    {\n      \"id\": 7,\n      \"approvalNumber\": \"746502\",\n      \"financialReference\": \"34827561\",\n      \"maskedCard\": \"**** 7382\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 780.4,\n      \"cardholder\": \"José Martínez\",\n      \"createdAt\": \"2026-07-16T10:54:49\"\n    },\n    {\n      \"id\": 8,\n      \"approvalNumber\": \"390681\",\n      \"financialReference\": \"47190582\",\n      \"maskedCard\": \"**** 6643\",\n      \"status\": \"Cancelado\",\n      \"amount\": 1899,\n      \"cardholder\": \"Sofía Morales\",\n      \"createdAt\": \"2026-07-16T11:18:55\"\n    },\n    {\n      \"id\": 9,\n      \"approvalNumber\": \"517284\",\n      \"financialReference\": \"82467015\",\n      \"maskedCard\": \"**** 2954\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 459.99,\n      \"cardholder\": \"Miguel Castillo\",\n      \"createdAt\": \"2026-07-16T11:47:30\"\n    },\n    {\n      \"id\": 10,\n      \"approvalNumber\": \"168953\",\n      \"financialReference\": \"63519284\",\n      \"maskedCard\": \"**** 8470\",\n      \"status\": \"Devolución\",\n      \"amount\": 999.99,\n      \"cardholder\": \"Daniela Cruz\",\n      \"createdAt\": \"2026-07-16T12:05:42\"\n    },\n    {\n      \"id\": 11,\n      \"approvalNumber\": \"721845\",\n      \"financialReference\": \"10928475\",\n      \"maskedCard\": \"**** 5138\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 2100,\n      \"cardholder\": \"Fernando Ruiz\",\n      \"createdAt\": \"2026-07-16T12:28:11\"\n    },\n    {\n      \"id\": 12,\n      \"approvalNumber\": \"458319\",\n      \"financialReference\": \"58271049\",\n      \"maskedCard\": \"**** 2264\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 1349.5,\n      \"cardholder\": \"Patricia Navarro\",\n      \"createdAt\": \"2026-07-16T12:54:36\"\n    },\n    {\n      \"id\": 13,\n      \"approvalNumber\": \"980461\",\n      \"financialReference\": \"76192854\",\n      \"maskedCard\": \"**** 7719\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 399.9,\n      \"cardholder\": \"Ricardo Silva\",\n      \"createdAt\": \"2026-07-16T13:16:50\"\n    },\n    {\n      \"id\": 14,\n      \"approvalNumber\": \"304782\",\n      \"financialReference\": \"94018376\",\n      \"maskedCard\": \"**** 1852\",\n      \"status\": \"Cancelado\",\n      \"amount\": 2750,\n      \"cardholder\": \"Gabriela Mendoza\",\n      \"createdAt\": \"2026-07-16T13:41:08\"\n    },\n    {\n      \"id\": 15,\n      \"approvalNumber\": \"615293\",\n      \"financialReference\": \"31756482\",\n      \"maskedCard\": \"**** 6047\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 649,\n      \"cardholder\": \"Alejandro Flores\",\n      \"createdAt\": \"2026-07-16T14:07:29\"\n    },\n    {\n      \"id\": 16,\n      \"approvalNumber\": \"872614\",\n      \"financialReference\": \"65823719\",\n      \"maskedCard\": \"**** 9183\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 8450,\n      \"cardholder\": \"Cecilia Ortega\",\n      \"createdAt\": \"2026-07-16T14:33:54\"\n    },\n    {\n      \"id\": 17,\n      \"approvalNumber\": \"194537\",\n      \"financialReference\": \"28364195\",\n      \"maskedCard\": \"**** 4326\",\n      \"status\": \"Devolución\",\n      \"amount\": 1125.8,\n      \"cardholder\": \"Hugo Vargas\",\n      \"createdAt\": \"2026-07-16T15:02:13\"\n    },\n    {\n      \"id\": 18,\n      \"approvalNumber\": \"563028\",\n      \"financialReference\": \"80429713\",\n      \"maskedCard\": \"**** 2905\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 289.5,\n      \"cardholder\": \"Elena Salinas\",\n      \"createdAt\": \"2026-07-16T15:29:37\"\n    },\n    {\n      \"id\": 19,\n      \"approvalNumber\": \"741690\",\n      \"financialReference\": \"52987460\",\n      \"maskedCard\": \"**** 7561\",\n      \"status\": \"Venta realizada\",\n      \"amount\": 1675.3,\n      \"cardholder\": \"Roberto Aguilar\",\n      \"createdAt\": \"2026-07-16T15:58:02\"\n    },\n    {\n      \"id\": 20,\n      \"approvalNumber\": \"286154\",\n      \"financialReference\": \"41629583\",\n      \"maskedCard\": \"**** 3488\",\n      \"status\": \"Cancelado\",\n      \"amount\": 935,\n      \"cardholder\": \"Valeria Jiménez\",\n      \"createdAt\": \"2026-07-16T16:20:44\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "^Bearer\\s.+$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "69a6f0a2-c97c-4525-9c3f-379065f2de21",
+          "body": "{\n  \"message\": \"No autenticado\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "12ef10a8-2d9c-4752-8692-4d86659bc86e",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "transactions/create",
+      "responses": [
+        {
+          "uuid": "88aa9fd5-e88c-4fd0-a386-475e9f2d453f",
+          "body": "{\n  \"status\": true,\n  \"message\": \"Venta creada correctamente\",\n  \"data\": {\n    \"id\": 21,\n    \"approvalNumber\": \"582914\",\n    \"financialReference\": \"73918462\",\n    \"maskedCard\": \"**** 3679\",\n    \"status\": \"Venta realizada\",\n    \"amount\": 1250.5,\n    \"cardholder\": \"Juan Pérez\",\n    \"createdAt\": \"2026-07-16T12:30:00\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "^Bearer\\s.+$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "0b76c496-8ce0-44a3-9857-89a876c6db2d",
+          "body": "{\n  \"success\": false,\n  \"message\": \"Ha ocurrido un error\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "cd77d601-4039-4087-993f-50d291fa05c7",
+      "type": "http",
+      "documentation": "",
+      "method": "patch",
+      "endpoint": "transactions/:id/cancel",
+      "responses": [
+        {
+          "uuid": "e48618ba-92d4-406b-8d8f-ea9d583d1709",
+          "body": "{\n  \"message\": \"La transacción fue cancelada correctamente.\",\n  \"data\": {\n    \"id\": {{urlParam \"id\"}},\n    \"status\": \"Cancelado\",\n    \"cancelledAt\": \"{{dateFormat (now) 'yyyy-MM-dd''T''HH:mm:ss'}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "^Bearer\\s.+$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "cf7d30ba-02ec-42d3-9a94-a43ade54603f",
+          "body": "{\n  \"message\": \"La transacción no puede cancelarse debido a su estado actual.\"\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "933c0041-f3fd-4509-9480-1720d5642957",
+      "type": "http",
+      "documentation": "",
+      "method": "patch",
+      "endpoint": "transactions/:id/refund",
+      "responses": [
+        {
+          "uuid": "58b537f5-5072-42f4-b3d8-f2039e715dbe",
+          "body": "{\n  \"message\": \"La devolución fue realizada correctamente.\",\n  \"data\": {\n    \"id\": {{urlParam \"id\"}},\n    \"status\": \"Devolución\",\n    \"refundedAt\": \"2026-07-16T16:35:00\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "^Bearer\\s.+$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "9a5f7924-d1cf-4d79-a686-cad1c9f4d67a",
+          "body": "{\n  \"message\": \"La transacción no puede ejecutarse debido a su estado actual.\"\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "5c39fd04-9536-4b7d-a039-3fa2c109477d"
+    },
+    {
+      "type": "route",
+      "uuid": "7131e43c-2075-41bc-9eba-e628f81b03da"
+    },
+    {
+      "type": "route",
+      "uuid": "12ef10a8-2d9c-4752-8692-4d86659bc86e"
+    },
+    {
+      "type": "route",
+      "uuid": "cd77d601-4039-4087-993f-50d291fa05c7"
+    },
+    {
+      "type": "route",
+      "uuid": "933c0041-f3fd-4509-9480-1720d5642957"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
