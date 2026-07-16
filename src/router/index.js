@@ -9,4 +9,9 @@ const router = createRouter({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | Transacciones` || 'Evaluación PE';
+  next();
+});
+
 export default router;
