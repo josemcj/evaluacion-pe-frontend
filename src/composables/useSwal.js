@@ -129,9 +129,6 @@ const useSwal = () => {
           cancelButtonColor: '#74788d',
           cancelButtonText: 'Cancelar',
           confirmButtonText: options.confirmButtonText ?? 'Aceptar',
-          customClass: {
-            confirmButton: 'text-dark',
-          },
         })
         .then((result) => {
           resolve(result.isConfirmed);
