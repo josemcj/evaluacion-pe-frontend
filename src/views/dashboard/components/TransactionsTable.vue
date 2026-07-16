@@ -1,8 +1,11 @@
 <script setup>
 import { computed, onMounted, ref, useTemplateRef } from 'vue';
 import { getTransactions } from '@/api/transactions';
+import { useAuthStore } from '@/stores/auth';
 
 const emit = defineEmits(['add-transaction']);
+
+const authStore = useAuthStore();
 
 const tableFields = [
   { key: 'id', label: 'ID' },
@@ -44,7 +47,9 @@ onMounted(fecthTransactions);
   <div class="mt-3">
     <BRow>
       <BCol md="4" sm="12">
-        <BButton class="mb-3" variant="primary" @click="emit('add-transaction')">Agregar transacción</BButton>
+        <BButton v-if="authStore.isOperator" class="mb-3" variant="primary" @click="emit('add-transaction')">
+          Agregar transacción
+        </BButton>
       </BCol>
 
       <BCol md="8">
