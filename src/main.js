@@ -12,6 +12,8 @@ import 'bootstrap-vue-next/dist/bootstrap-vue-next.css';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+import './style.css';
+
 const pinia = createPinia();
 const app = createApp(App);
 
