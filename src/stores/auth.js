@@ -55,8 +55,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const login = async (credentials) => {
     const response = await fetchLogin(credentials);
-
-    const accessToken = response.data.accessToken ?? response.data.token;
+    const accessToken = response.accessToken ?? null;
 
     if (!accessToken) {
       throw new Error('El servidor no devolvió un token.');
@@ -70,7 +69,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const decodedRole = getRoleFromPayload(payload);
     token.value = accessToken;
-    user.value = response.data.user ?? {};
+    user.value = response.user ?? {};
 
     localStorage.setItem(TOKEN_LS_KEY, token.value);
     localStorage.setItem(USER_LS_KEY, JSON.stringify(user.value));
