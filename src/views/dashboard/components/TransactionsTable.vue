@@ -19,7 +19,11 @@ const baseFields = [
 ];
 const tableFields = computed(() => {
   if (authStore.isSupervisor) {
-    return [...baseFields, { key: 'actions', label: 'Acciones' }];
+    return [
+      ...baseFields,
+      { key: 'financialReference', label: 'Referencia financiera' },
+      { key: 'actions', label: 'Acciones' },
+    ];
   }
   return baseFields;
 });
