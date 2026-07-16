@@ -2,9 +2,11 @@
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
+import useSwal from '@/composables/useSwal';
 
 const authStore = useAuthStore();
 const router = useRouter();
+const swal = useSwal();
 
 const form = reactive({
   username: '',
@@ -23,7 +25,8 @@ const submit = async () => {
     const response = await authStore.login(form);
     await router.replace({ name: 'dashboard' });
   } catch (error) {
-    console.error(error);
+    const message = error.response?.data?.message || 'Ocurrió un error al iniciar sesión.';
+    swal.toast(message, { icon: 'error' });
   } finally {
     isLoading.value = false;
   }
@@ -32,11 +35,9 @@ const submit = async () => {
 
 <template>
   <main class="min-vh-100 d-flex align-items-center justify-content-center bg-light p-3">
-    <BCard class="shadow-sm border-0 login-card">
+    <BCard class="shadow-sm border-0 p-4">
       <div class="text-center mb-4">
-        <div class="logo-placeholder mx-auto mb-3">$</div>
-
-        <h1 class="h3 mb-1">Payment Portal</h1>
+        <h1 class="h3 mb-1">Iniciar sesión</h1>
 
         <p class="text-secondary mb-0">Ingresa tus credenciales para continuar</p>
       </div>

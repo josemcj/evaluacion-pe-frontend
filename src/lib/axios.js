@@ -23,20 +23,10 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error?.response?.status === 401) {
-      //   const { useAuthStore } = await import('@/stores/auth');
-      //   const authStore = useAuthStore();
+      const { useAuthStore } = await import('@/stores/auth');
+      const authStore = useAuthStore();
 
-      //   await Swal.fire({
-      //     icon: 'error',
-      //     title: 'Sesión expirada',
-      //     text: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.',
-      //     confirmButtonText: 'Aceptar',
-      //     allowOutsideClick: false,
-      //     allowEscapeKey: false,
-      //     allowEnterKey: false,
-      //   });
-
-      //   authStore.forceLogout();
+      authStore.forceLogout();
       router.push({ name: 'login' });
     }
 

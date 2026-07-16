@@ -1,7 +1,23 @@
 <script setup>
-import Header from '@/components/header.vue';
+import { computed, defineAsyncComponent } from 'vue';
+import { useAuthStore } from '@/stores/auth.js';
+import Layout from '@/components/layout/layout.vue';
+
+const authStore = useAuthStore();
+
+const OperatorDashboard = defineAsyncComponent(() => import('./operator.vue'));
+const SupervisorDashboard = defineAsyncComponent(() => import('./supervisor.vue'));
+
+const componentsByRole = {
+  Operador: OperatorDashboard,
+  Supervisor: SupervisorDashboard,
+};
+
+const DashboardComponent = computed(() => componentsByRole[authStore.role] || null);
 </script>
 
 <template>
-  <Header />
+  <Layout>
+    <component :is="DashboardComponent" />
+  </Layout>
 </template>
